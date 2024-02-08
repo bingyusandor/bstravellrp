@@ -18,8 +18,8 @@ server:
         backend:
           - scp: true
             path: /sap
-            url: http://ides500:9222
-            destination: ides500
+            url: http://s4hana:9222
+            destination: s4hana_500
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
