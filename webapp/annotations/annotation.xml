@@ -13,6 +13,78 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+          <Annotations Target="cds_zats_fe_travel.TRAVELType/TravelId">
+              <Annotation Term="Common.Text" Path="Description"/>
+          </Annotations>
+          <Annotations Target="cds_zats_fe_travel.TRAVELType">
+            <Annotation Term="UI.DataPoint" Qualifier="myRating">
+                <Record Type="UI.DataPointType">
+                    <PropertyValue Property="Value" Path="Rating" />
+                    <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating"/>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.DataPoint" Qualifier="myFees" >
+                <Record Type="UI.DataPointType">
+                    <PropertyValue Property="Value" Path="BookingFee" />
+                    <PropertyValue Property="TargetValue" Path="TotalPrice" />
+                    <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+                </Record>
+            </Annotation>
+            <Annotation Term="Common.SemanticKey" >
+                <Collection>
+                    <PropertyPath>TravelId</PropertyPath>
+                </Collection>
+            </Annotation>
+            <Annotation Term="UI.HeaderInfo" >
+                <Record Type="UI.HeaderInfoType">
+                    <PropertyValue Property="TypeName" String="{@i18n>travel}"/>
+                    <PropertyValue Property="TypeNamePlural" String="{@i18n>travels}"/>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.SelectionFields" >
+                <Collection>
+                    <PropertyPath>AgencyId</PropertyPath>
+                    <PropertyPath>CustomerId</PropertyPath>
+                    <PropertyPath>OverallStatus</PropertyPath>
+                </Collection>
+            </Annotation>
+            <Annotation Term="UI.LineItem" >
+                <Collection>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="TravelId"/>
+                        <PropertyValue Property="Label" String="{@i18n>travelid}"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="CustomerId"/>
+                        <PropertyValue Property="Label" String="{@i18n>customerid}"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="AgencyId"/>
+                        <PropertyValue Property="Label" String="{@i18n>agencyid}"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="BeginDate"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="OverallStatus"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="BookingFee"/>
+                    </Record>
+                    <Record Type="UI.DataFieldForAnnotation">
+                        <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#myFees"/>
+                        <PropertyValue Property="Label" String="{@i18n>fees}"/>
+                    </Record>
+                    <Record Type="UI.DataFieldForAnnotation">
+                        <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#myRating"/>
+                        <PropertyValue Property="Label" String="{@i18n>rating}"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="TotalPrice"/>
+                    </Record>
+                </Collection>
+            </Annotation>
+         </Annotations>  
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
